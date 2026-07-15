@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+class EBBillCalculation {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Connection Type (Domestic/Commercial): ");
+        String type = sc.next();
+
+        System.out.print("Enter Units Consumed: ");
+        int units = sc.nextInt();
+
+        double amount = 0;
+
+        if (type.equalsIgnoreCase("Domestic")) {
+
+            if (units <= 100)
+                amount = 0;
+            else if (units <= 200)
+                amount = (units - 100) * 2;
+            else if (units <= 500)
+                amount = (units - 150) * 4;
+            else
+                amount = units * 6;
+
+        } else if (type.equalsIgnoreCase("Commercial")) {
+
+            if (units <= 100)
+                amount = units * 2;
+            else if (units <= 200)
+                amount = units * 4;
+            else if (units <= 500)
+                amount = units * 6;
+            else
+                amount = units * 7;
+
+        } else {
+            System.out.println("Invalid Connection Type");
+            return;
+        }
+
+        System.out.println("Amount to be Paid: Rs. " + amount);
+    }
+}
